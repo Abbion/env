@@ -291,14 +291,15 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active
   margin: 3px; 
 }
 
-      #LookingGlassDialog {
-        color: #e33c1e;
-        border: 1px solid #10bee9;
-        border-radius: 3px;
-        background-color: #ee6028;
-        spacing: 4px;
-        padding: 8px; 
-      }
+#LookingGlassDialog 
+{
+  color: #ffffff;
+  border: 1px solid #6CB88C;
+  border-radius: 3px;
+  background-color: #3D404D;
+  spacing: 4px;
+  padding: 8px; 
+}
 
 /*Startup menu*/
 .menu 
@@ -439,6 +440,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active
   width: 32px;
   /* Set the symbolic foreground color for icons, and importantly, the system tray applet icons */
   color: #ffffff;
+  border-radius: 8px;
 }
       #panelLeft {
         spacing: 4px; }
@@ -533,11 +535,11 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active
         
 .panel-top, .panel-bottom, .panel-left, .panel-right 
 {
+  margin: 5px 10px;
   color: #ff4b4b;
   border: none;
-  background-color: rgba(61, 64, 77, 0.6);
+  background-color: rgba(61, 64, 77, 0.75);
   font-size: 1em;
-  padding: 0px; 
 }
 
   /*
@@ -1663,7 +1665,12 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active
 .panel-top .workspace-switcher,
 .panel-bottom .workspace-switcher 
 {
-  padding: 0 4px; 
+  padding: 0; 
+}
+
+.workspace-button-first
+{
+  border-radius: 8px, 0px, 0px, 8px;
 }
 
 .workspace-button 
@@ -1810,7 +1817,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active
 {
   width: 8px;
   background-color: #FFFFFF;
-  border: 1px solid #CCCCCC; 
+  border: 1px solid #CCCCCC;
+  border-radius: 0px 8px 8px 0px;
 }
 .applet-cornerbar.vertical 
 {
@@ -2044,13 +2052,15 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active
 {
   border: 1px solid #3D404D;
   color: #3D404D;
-  background-color: #6CB88C;  
+  background-color: #6CB88C;
 }
 
-      .dialog .dialog-button:destructive-action {
-        border: 1px solid #F04A50;
-        color: #15cecf;
-        background-color: #eaba1e; }
+.dialog .dialog-button:destructive-action 
+{
+  color: #FFFFFF;
+  background-color: #DB4852; 
+  border: 1px solid #9c2327;
+}
 .dialog .dialog-button:focus:destructive-action 
 {
   color: #FFFFFF;
