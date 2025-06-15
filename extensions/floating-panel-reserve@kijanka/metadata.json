@@ -1,0 +1,8 @@
+{
+  "uuid": "floating-panel-reserve@kijanka",
+  "name": "Floating Panel Reserve Space",
+  "description": "Reserves space at the top of the screen for a floating panel.",
+  "version": 1,
+  "cinnamon-version": ["5.0", "5.2", "5.4", "6.0"],
+  "type": "extension"
+}
