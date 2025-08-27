@@ -145,11 +145,6 @@ def get_accounts() -> list | None:
             input(RETURN_TO_MENU_INFO_TEXT)
             return
 
-    if not data:
-        print("Vault is empty")
-        input(RETURN_TO_MENU_INFO_TEXT)
-        return None
-
     return list(data.keys())
 
 def save_new_password():
