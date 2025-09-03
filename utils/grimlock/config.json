@@ -3,6 +3,7 @@
     "master_password_hash" : "",
     "encription_length" : "32",
     "salt_lenth" : "16",
-    "nonce" : "12"
+    "nonce" : "12",
+    "max_password_length" : 32
   }
 }
