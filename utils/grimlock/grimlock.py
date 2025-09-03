@@ -28,7 +28,7 @@ def _b64e(b : bytes) -> str:
 def _b64d(s : str) -> bytes:
     return base64.b64decode(s.encode())
 
-def return_to_menu(s : str):
+def return_to_menu():
     if G_cli_mode == False:
         input(RETURN_TO_MENU_INFO_TEXT)
 
@@ -47,7 +47,8 @@ def encrypt_password(plain_text : str, master_password : str) -> dict:
     key = derive_key(master_password, salt)
     aesgcm = AESGCM(key)
     nonce = os.urandom(NONCE_LENGTH)
-    ciphertext = aesgcm.encrypt(nonce, plain_text.encode(), None)
+    #G_session_password.encode()
+    ciphertext = aesgcm.encrypt(nonce, plain_text.encode(), G_session_password.encode())
 
     return {
         "salt": _b64e(salt),
@@ -58,7 +59,7 @@ def encrypt_password(plain_text : str, master_password : str) -> dict:
 def decrypt_password(bundle : dict, master_password : str) -> str:
     key = derive_key(master_password, _b64d(bundle["salt"]))
     aesgcm = AESGCM(key)
-    plain = aesgcm.decrypt(_b64d(bundle["nonce"]), _b64d(bundle["ct"]), None)
+    plain = aesgcm.decrypt(_b64d(bundle["nonce"]), _b64d(bundle["ct"]), G_session_password.encode())
     return plain.decode()
 
 def store_credentials(account : str, bundle : dict):
@@ -167,8 +168,8 @@ def check_if_account_exists(account_name : str) -> bool:
 
     if account_name in saved_accounts:
         print("Account name already saved by the manager")
-        return False
-    return True
+        return True
+    return False
 
 def parse_account_name(account_name : str) -> bool:
     if not all(ch.isalnum() or ch.isspace() for ch in account_name):
@@ -362,6 +363,7 @@ def visual_mode():
             sys.exit(0)
         else:
             print("Invalid option, please try again")
+            return_to_menu()
 
 def cli_mode():
     global G_cli_mode, G_cli_password
@@ -445,10 +447,12 @@ def cli_mode():
 
             if account_name == None or password == None:
                 print(f"Account line { account_number }")
+                print("1")
                 continue
 
             if check_if_account_exists(account_name):
                 print(f"Account line { account_number }")
+                continue
 
             save_new_password(account_name, password)
             success_count += 1
